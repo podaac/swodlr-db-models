@@ -1,8 +1,8 @@
-import l2RasterProductInit, {L2RasterProduct} from './l2-raster-product';
-import productHistoryInit, {ProductHistory} from './product-history';
-import rasterDefinitionInit, {RasterDefinition} from './raster-definition';
-import statusInit, {Status} from './status';
-import userInit, {User} from './user';
+import l2RasterProductInit, {L2RasterProduct} from './models/l2-raster-product.js';
+import productHistoryInit, {ProductHistory} from './models/product-history.js';
+import rasterDefinitionInit, {RasterDefinition} from './models/raster-definition.js';
+import statusInit, {Status} from './models/status.js';
+import userInit, {User} from './models/user.js';
 
 /**
  * Initialize all models
