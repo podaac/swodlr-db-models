@@ -1,5 +1,5 @@
 {
-  "name": "swodlr-raster-create",
+  "name": "swodlr-db-models",
   "version": "0.0.1",
   "description": "Database models for SWODLR",
   "main": "index.js",
