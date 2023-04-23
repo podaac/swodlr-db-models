@@ -1,0 +1,32 @@
+{
+  "name": "swodlr-raster-create",
+  "version": "0.0.1",
+  "description": "Database models for SWODLR",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/podaac/swodlr-db-models.git"
+  },
+  "author": "podaac-tva <podaac-tva@jpl.nasa.gov>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/podaac/swodlr-db-models/issues"
+  },
+  "homepage": "https://github.com/podaac/swodlr-db-models#readme",
+  "type": "module",
+  "dependencies": {
+    "sequelize": "^6.31.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.39.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}
