@@ -1,5 +1,5 @@
 {
-  "name": "swodlr-db-models",
+  "name": "@podaac/swodlr-db-models",
   "version": "0.0.1",
   "description": "Database models for SWODLR",
   "main": "index.js",
@@ -25,5 +25,8 @@
   "devDependencies": {
     "eslint": "^8.39.0",
     "eslint-config-google": "^0.14.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }

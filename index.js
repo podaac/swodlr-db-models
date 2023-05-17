@@ -1,8 +1,9 @@
-import l2RasterProductInit, {L2RasterProduct} from './models/l2-raster-product.js';
+import l2RasterProductInit, {L2RasterProduct} from './models/l2-raster-product.js'; // eslint-disable-line max-len
 import productHistoryInit, {ProductHistory} from './models/product-history.js';
-import rasterDefinitionInit, {RasterDefinition} from './models/raster-definition.js';
+import rasterDefinitionInit, {RasterDefinition} from './models/raster-definition.js'; // eslint-disable-line max-len
 import statusInit, {Status} from './models/status.js';
 import userInit, {User} from './models/user.js';
+
 
 /**
  * Initialize all models
