@@ -1,6 +1,6 @@
 {
   "name": "@podaac/swodlr-db-models",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Database models for SWODLR",
   "main": "index.js",
   "scripts": {
