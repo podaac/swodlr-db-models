@@ -1,28 +1,16 @@
 import {DataTypes, Model} from 'sequelize';
+import L2RasterProduct from './l2-raster-product.js';
+import User from './user.js';
 
 /** ProductHistory model */
-export class ProductHistory extends Model {}
+export default class ProductHistory extends Model {}
 
 /**
  * Initialize the ProductHistory model
  * @param {Sequelize} sequelize - a sequelize instance
  */
-export default function init(sequelize) {
+export function init(sequelize) {
   ProductHistory.init({
-    requestedByID: {
-      type: DataTypes.UUID,
-      references: {
-        model: 'User',
-        key: 'id',
-      },
-    },
-    rasterProductID: {
-      type: DataTypes.UUID,
-      references: {
-        model: 'L2RasterProduct',
-        key: 'id',
-      },
-    },
     timestamp: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -31,5 +19,17 @@ export default function init(sequelize) {
     sequelize,
     timestamps: false,
     freezeTableName: true,
+  });
+}
+
+/**
+ * Setup model associations
+ */
+export function associate() {
+  ProductHistory.belongsTo(L2RasterProduct, {
+    foreignKey: 'rasterProductID',
+  });
+  ProductHistory.belongsTo(User, {
+    foreignKey: 'requestedByID',
   });
 }

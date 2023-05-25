@@ -1,20 +1,40 @@
-import l2RasterProductInit, {L2RasterProduct} from './models/l2-raster-product.js'; // eslint-disable-line max-len
-import productHistoryInit, {ProductHistory} from './models/product-history.js';
-import rasterDefinitionInit, {RasterDefinition} from './models/raster-definition.js'; // eslint-disable-line max-len
-import statusInit, {Status} from './models/status.js';
-import userInit, {User} from './models/user.js';
-
+import L2RasterProduct, {
+  init as l2RasterProductInit,
+  associate as l2RasterProductAssociate,
+} from './models/l2-raster-product.js';
+import ProductHistory, {
+  init as productHistoryInit,
+  associate as productHistoryAssociate,
+} from './models/product-history.js';
+import RasterDefinition, {
+  init as rasterDefinitionInit,
+  associate as rasterDefinitionAssociate,
+} from './models/raster-definition.js';
+import Status, {
+  init as statusInit,
+  associate as statusAssociate,
+} from './models/status.js';
+import User, {
+  init as userInit,
+  associate as userAssociate,
+} from './models/user.js';
 
 /**
  * Initialize all models
  * @param {Sequelize} sequelize - instance of Sequelize
  */
 export default function init(sequelize) {
+  userInit(sequelize);
+  rasterDefinitionInit(sequelize);
   l2RasterProductInit(sequelize);
   productHistoryInit(sequelize);
-  rasterDefinitionInit(sequelize);
   statusInit(sequelize);
-  userInit(sequelize);
+
+  userAssociate();
+  rasterDefinitionAssociate();
+  l2RasterProductAssociate();
+  productHistoryAssociate();
+  statusAssociate();
 }
 
 export {

@@ -1,14 +1,15 @@
 import {DataTypes, Model} from 'sequelize';
 import {v4 as uuidv4} from 'uuid';
+import L2RasterProduct from './l2-raster-product.js';
 
 /** RasterDefinition model */
-export class RasterDefinition extends Model {}
+export default class RasterDefinition extends Model {}
 
 /**
  * Initialize the RasterDefinition model
  * @param {Sequelize} sequelize - a sequelize instance
  */
-export default function init(sequelize) {
+export function init(sequelize) {
   RasterDefinition.init({
     id: {
       type: DataTypes.UUID,
@@ -36,5 +37,14 @@ export default function init(sequelize) {
   }, {
     sequelize,
     timestamps: false,
+  });
+}
+
+/**
+ * Setup model associations
+ */
+export function associate() {
+  RasterDefinition.hasMany(L2RasterProduct, {
+    foreignKey: 'definitionID',
   });
 }

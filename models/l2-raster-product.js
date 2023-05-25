@@ -1,26 +1,22 @@
 import {DataTypes, Model} from 'sequelize';
 import {v4 as uuidv4} from 'uuid';
+import RasterDefinition from './raster-definition.js';
+import Status from './status.js';
+import User from './user.js';
 
 /** L2RasterProduct model */
-export class L2RasterProduct extends Model {}
+export default class L2RasterProduct extends Model {}
 
 /**
  * Initialize the L2RasterProduct model
  * @param {Sequelize} sequelize - a sequelize instance
  */
-export default function init(sequelize) {
-  RasterDefinition.init({
+export function init(sequelize) {
+  L2RasterProduct.init({
     id: {
       type: DataTypes.UUID,
       defaultValue: uuidv4,
       primaryKey: true,
-    },
-    definitionID: {
-      type: DataTypes.UUID,
-      references: {
-        model: 'RasterDefinition',
-        key: 'id',
-      },
     },
     cycle: {
       type: DataTypes.INTEGER,
@@ -37,5 +33,21 @@ export default function init(sequelize) {
   }, {
     sequelize,
     timestamps: false,
+  });
+}
+
+/**
+ * Setup model associations
+ */
+export function associate() {
+  L2RasterProduct.belongsTo(RasterDefinition, {
+    foreignKey: 'definitionID',
+  });
+  L2RasterProduct.hasMany(Status, {
+    foreignKey: 'productID',
+  });
+  L2RasterProduct.belongsToMany(User, {
+    through: 'ProductHistory',
+    foreignKey: 'rasterProductID',
   });
 }
