@@ -27,9 +27,9 @@ export function init(sequelize) {
  */
 export function associate() {
   ProductHistory.belongsTo(L2RasterProduct, {
-    foreignKey: 'rasterProductID',
+    foreignKey: 'rasterProductId',
   });
   ProductHistory.belongsTo(User, {
-    foreignKey: 'requestedByID',
+    foreignKey: 'requestedById',
   });
 }

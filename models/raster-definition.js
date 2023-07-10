@@ -1,6 +1,6 @@
 import {DataTypes, Model} from 'sequelize';
 import {v4 as uuidv4} from 'uuid';
-import L2RasterProduct from './l2-raster-product.js';
+import User from './user.js';
 
 /** RasterDefinition model */
 export default class RasterDefinition extends Model {}
@@ -44,7 +44,7 @@ export function init(sequelize) {
  * Setup model associations
  */
 export function associate() {
-  RasterDefinition.hasMany(L2RasterProduct, {
-    foreignKey: 'definitionID',
+  RasterDefinition.belongsTo(User, {
+    foreignKey: 'userId',
   });
 }

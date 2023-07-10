@@ -1,3 +1,7 @@
+import Granule, {
+  init as granuleInit,
+  associate as granuleAssociate,
+} from './models/granule.js';
 import L2RasterProduct, {
   init as l2RasterProductInit,
   associate as l2RasterProductAssociate,
@@ -27,17 +31,20 @@ export default function init(sequelize) {
   userInit(sequelize);
   rasterDefinitionInit(sequelize);
   l2RasterProductInit(sequelize);
+  granuleInit(sequelize);
   productHistoryInit(sequelize);
   statusInit(sequelize);
 
   userAssociate();
   rasterDefinitionAssociate();
   l2RasterProductAssociate();
+  granuleAssociate();
   productHistoryAssociate();
   statusAssociate();
 }
 
 export {
+  Granule,
   L2RasterProduct,
   ProductHistory,
   RasterDefinition,

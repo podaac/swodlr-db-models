@@ -2,15 +2,15 @@ import {DataTypes, Model} from 'sequelize';
 import {v4 as uuidv4} from 'uuid';
 import L2RasterProduct from './l2-raster-product.js';
 
-/** Status model */
-export default class Status extends Model {}
+/** Granule model */
+export default class Granule extends Model {}
 
 /**
- * Initialize the Status model
+ * Initialize the Granule model
  * @param {Sequelize} sequelize - a sequelize instance
  */
 export function init(sequelize) {
-  Status.init({
+  Granule.init({
     id: {
       type: DataTypes.UUID,
       defaultValue: uuidv4,
@@ -20,17 +20,13 @@ export function init(sequelize) {
       type: DataTypes.DATE,
       allowNull: false,
     },
-    state: {
+    uri: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    reason: {
-      type: DataTypes.TEXT,
     },
   }, {
     sequelize,
     timestamps: false,
-    freezeTableName: true,
   });
 }
 
@@ -38,7 +34,7 @@ export function init(sequelize) {
  * Setup model associations
  */
 export function associate() {
-  Status.belongsTo(L2RasterProduct, {
+  Granule.belongsTo(L2RasterProduct, {
     foreignKey: 'productId',
   });
 }

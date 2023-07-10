@@ -1,6 +1,5 @@
 import {DataTypes, Model} from 'sequelize';
 import {v4 as uuidv4} from 'uuid';
-import RasterDefinition from './raster-definition.js';
 import Status from './status.js';
 import User from './user.js';
 
@@ -30,6 +29,24 @@ export function init(sequelize) {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    outputGranuleExtentFlag: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    outputSamplingGridType: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    rasterResolution: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    utmZoneAdjust: {
+      type: DataTypes.INTEGER,
+    },
+    mgrsBandAdjust: {
+      type: DataTypes.INTEGER,
+    },
   }, {
     sequelize,
     timestamps: false,
@@ -40,14 +57,11 @@ export function init(sequelize) {
  * Setup model associations
  */
 export function associate() {
-  L2RasterProduct.belongsTo(RasterDefinition, {
-    foreignKey: 'definitionID',
-  });
   L2RasterProduct.hasMany(Status, {
-    foreignKey: 'productID',
+    foreignKey: 'productId',
   });
   L2RasterProduct.belongsToMany(User, {
     through: 'ProductHistory',
-    foreignKey: 'rasterProductID',
+    foreignKey: 'rasterProductId',
   });
 }

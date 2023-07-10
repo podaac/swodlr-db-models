@@ -18,6 +18,19 @@ export function init(sequelize) {
     },
     username: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
   }, {
     sequelize,
@@ -31,6 +44,6 @@ export function init(sequelize) {
 export function associate() {
   User.belongsToMany(L2RasterProduct, {
     through: 'ProductHistory',
-    foreignKey: 'requestedByID',
+    foreignKey: 'requestedById',
   });
 }
