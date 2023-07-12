@@ -1,5 +1,6 @@
 import {DataTypes, Model} from 'sequelize';
 import {v4 as uuidv4} from 'uuid';
+import Granule from './granule.js';
 import Status from './status.js';
 import User from './user.js';
 
@@ -57,6 +58,9 @@ export function init(sequelize) {
  * Setup model associations
  */
 export function associate() {
+  L2RasterProduct.hasMany(Granule, {
+    foreignKey: 'productId',
+  });
   L2RasterProduct.hasMany(Status, {
     foreignKey: 'productId',
   });
