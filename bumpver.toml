@@ -1,17 +1,12 @@
 [bumpver]
-current_version = "0.0.5"
+current_version = "1.0.0-rc0"
 version_pattern = "MAJOR.MINOR.PATCH[-TAGNUM]"
+pre_commit_hook = "scripts/npm-version.sh"
 commit = true
 tag = true
 push = true
 
 [bumpver.file_patterns]
-"package.json" = [
-    '"version": "{version}"'
-]
-"package-lock.json" = [
-    '"version": "{version}"'
-]
 "bumpver.toml" = [
     'current_version = "{version}"',
 ]
